@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  backend-service:
+    build: backend
+    ports:
+      - 8000:80
+    restart: unless-stopped
+
+  frontend-service:
+    build: frontend 
+    depends_on:
+      - backend-service
+    ports:
+      - 8001:80
+    restart: unless-stopped
